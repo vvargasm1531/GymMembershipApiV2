@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi primera página web</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Prueba API Saludar</h1>
+  
+  <input id="nombre" placeholder="Escribe tu nombre">
+  <button onclick="saludar()">Enviar</button>
+  <p id="respuesta"></p>
+
+  <h2>Información del curso</h2>
+  <button onclick="verInfo()">Ver Info</button>
+  <div id="info"></div>
+
+  <script>
+    async function saludar() {
+      const nombre = document.getElementById("nombre").value;
+      if(!nombre) {
+        document.getElementById("respuesta").innerText = "Por favor escribe un nombre.";
+        return;
+      }
+      const res = await fetch(`http://localhost:5096/api/saludar/${nombre}`);
+      const texto = await res.text();
+      document.getElementById("respuesta").innerText = texto;
+    }
+
+    async function verInfo() {
+      const res = await fetch("http://localhost:5096/api/info");
+      const data = await res.json();
+      document.getElementById("info").innerHTML = `
+        <table border="1" style="margin:auto; margin-top:10px;">
+          <tr><th>Curso</th><th>Estado</th><th>Fecha</th></tr>
+          <tr><td>${data.Curso}</td><td>${data.Estado}</td><td>${data.Fecha}</td></tr>
+        </table>
+      `;
+    }
+  </script>
+</body>
+</html>
+
+
+<link rel="stylesheet" href="style.css">
