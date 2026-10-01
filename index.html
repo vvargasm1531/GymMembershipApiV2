@@ -1,8 +1,9 @@
-
+dir
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PowerFit Gym</title>
@@ -145,71 +146,86 @@
 </section>
 
     <!-- MEMBRESIAS -->
-    <section id="membresias">
+<section id="membresias">
 
-        <h2>Nuestras Membresías</h2>
+    <h2>Nuestras Membresías</h2>
 
-        <div class="cards">
+    <div class="cards">
 
-            <div class="card">
+        <!-- PLAN BÁSICO -->
+        <div class="card">
 
-                <h3>Básica</h3>
+            <h3>Básica</h3>
 
-                <p class="precio">$20</p>
+            <p class="precio">$20</p>
 
-                <ul>
-                    <li>✔ Acceso al gimnasio</li>
-                    <li>✔ Área de cardio</li>
-                    <li>✔ Horario regular</li>
-                </ul>
+            <ul>
+                <li>✔ Acceso al gimnasio</li>
+                <li>✔ Área de cardio</li>
+                <li>✔ Horario regular</li>
+            </ul>
 
-                <a href="#contacto" class="btn">
-                    Elegir Plan
-                </a>
-
-            </div>
-
-
-            <div class="card">
-
-                <h3>Premium</h3>
-
-                <p class="precio">$35</p>
-
-                <ul>
-                    <li>✔ Acceso ilimitado</li>
-                    <li>✔ Clases grupales</li>
-                    <li>✔ Entrenador personal</li>
-                </ul>
-
-                <a href="#contacto" class="btn">
-                    Elegir Plan
-                </a>
-
-            </div>
-
-
-            <div class="card">
-
-                <h3>VIP</h3>
-
-                <p class="precio">$50</p>
-
-                <ul>
-                    <li>✔ Todo Premium</li>
-                    <li>✔ Nutricionista</li>
-                    <li>✔ Área exclusiva</li>
-                </ul>
-
-                <a href="#contacto" class="btn">
-                    Elegir Plan
-                </a>
-
-            </div>
+            <a
+                href="#contacto"
+                class="btn"
+                onclick="elegirPlan('Básica')"
+            >
+                Elegir Plan
+            </a>
 
         </div>
 
-    </section>
+
+        <!-- PLAN PREMIUM -->
+        <div class="card">
+
+            <h3>Premium</h3>
+
+            <p class="precio">$35</p>
+
+            <ul>
+                <li>✔ Acceso ilimitado</li>
+                <li>✔ Clases grupales</li>
+                <li>✔ Entrenador personal</li>
+            </ul>
+
+            <a
+                href="#contacto"
+                class="btn"
+                onclick="elegirPlan('Premium')"
+            >
+                Elegir Plan
+            </a>
+
+        </div>
+
+
+        <!-- PLAN VIP -->
+        <div class="card">
+
+            <h3>VIP</h3>
+
+            <p class="precio">$50</p>
+
+            <ul>
+                <li>✔ Todo Premium</li>
+                <li>✔ Nutricionista</li>
+                <li>✔ Área exclusiva</li>
+            </ul>
+
+            <a
+                href="#contacto"
+                class="btn"
+                onclick="elegirPlan('VIP')"
+            >
+                Elegir Plan
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
 
 
     <!-- BENEFICIOS -->
@@ -244,6 +260,39 @@
 
     </section>
 
+    <!-- CONTACTO -->
+
+<section id="contacto">
+
+    <h2>Contáctanos</h2>
+
+    <form onsubmit="enviarFormulario(event)">
+
+        <input
+            type="text"
+            placeholder="Nombre Completo"
+            required
+        >
+
+        <input
+            type="email"
+            placeholder="Correo Electrónico"
+            required
+        >
+
+        <textarea
+            placeholder="Escribe tu mensaje"
+        ></textarea>
+
+        <button type="submit">
+            Enviar Mensaje
+        </button>
+
+    </form>
+
+</section>
+
+
 
     <!-- CONTACTO -->
     <section id="contacto">
@@ -251,6 +300,8 @@
         <h2>Contáctanos</h2>
 
         <form>
+
+            <form onsubmit="enviarFormulario(event)"></form>
 
             <input
                 type="text"
