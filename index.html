@@ -1,46 +1,287 @@
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Mi primera página web</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerFit Gym</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h1>Prueba API Saludar</h1>
-  
-  <input id="nombre" placeholder="Escribe tu nombre">
-  <button onclick="saludar()">Enviar</button>
-  <p id="respuesta"></p>
 
-  <h2>Información del curso</h2>
-  <button onclick="verInfo()">Ver Info</button>
-  <div id="info"></div>
+    <header>
+        <nav>
+            <div class="logo">GymMembership</div>
 
-  <script>
-    async function saludar() {
-      const nombre = document.getElementById("nombre").value;
-      if(!nombre) {
-        document.getElementById("respuesta").innerText = "Por favor escribe un nombre.";
-        return;
-      }
-      const res = await fetch(`http://localhost:5096/api/saludar/${nombre}`);
-      const texto = await res.text();
-      document.getElementById("respuesta").innerText = texto;
-    }
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#membresias">Membresías</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    async function verInfo() {
-      const res = await fetch("http://localhost:5096/api/info");
-      const data = await res.json();
-      document.getElementById("info").innerHTML = `
-        <table border="1" style="margin:auto; margin-top:10px;">
-          <tr><th>Curso</th><th>Estado</th><th>Fecha</th></tr>
-          <tr><td>${data.Curso}</td><td>${data.Estado}</td><td>${data.Fecha}</td></tr>
-        </table>
-      `;
-    }
-  </script>
+
+    <!-- PORTADA -->
+    <section id="inicio" class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Planes diferentes.<br>
+                <span class="destacado">
+                    Resultados increíbles.
+                </span>
+            </h1>
+
+            <p>
+                Entrena con los mejores equipos, entrenadores certificados
+                y planes diseñados para ayudarte a alcanzar tus metas.
+            </p>
+
+            <a href="#membresias" class="btn">
+                Ver Membresías
+            </a>
+
+        </div>
+
+    </section>
+
+<!-- ESTADÍSTICAS -->
+<section class="stats">
+
+    <div class="stat">
+        <h3>500+</h3>
+        <p>Miembros Activos</p>
+    </div>
+
+    <div class="stat">
+        <h3>20+</h3>
+        <p>Entrenadores</p>
+    </div>
+
+    <div class="stat">
+        <h3>10</h3>
+        <p>Años de Experiencia</p>
+    </div>
+
+    <div class="stat">
+        <h3>24/7</h3>
+        <p>Acceso Disponible</p>
+    </div>
+
+</section>
+
+<!-- TESTIMONIOS -->
+
+<section class="testimonios">
+
+    <h2>Lo que dicen nuestros clientes</h2>
+
+    <div class="testimonios-container">
+
+        <div class="testimonio">
+            <p>
+                "Perdí 15 kilos gracias a los entrenadores y al excelente ambiente."
+            </p>
+            <h4>- Carlos M.</h4>
+        </div>
+
+        <div class="testimonio">
+            <p>
+                "Las instalaciones son increíbles y siempre están limpias."
+            </p>
+            <h4>- Ana R.</h4>
+        </div>
+
+        <div class="testimonio">
+            <p>
+                "La mejor inversión que he hecho para mi salud."
+            </p>
+            <h4>- José P.</h4>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- HORARIOS -->
+
+<section class="horarios">
+
+    <h2>Horarios</h2>
+
+    <table>
+
+        <tr>
+            <th>Día</th>
+            <th>Horario</th>
+        </tr>
+
+        <tr>
+            <td>Lunes - Viernes</td>
+            <td>5:00 AM - 10:00 PM</td>
+        </tr>
+
+        <tr>
+            <td>Sábado</td>
+            <td>6:00 AM - 8:00 PM</td>
+        </tr>
+
+        <tr>
+            <td>Domingo</td>
+            <td>7:00 AM - 5:00 PM</td>
+        </tr>
+
+    </table>
+
+</section>
+
+    <!-- MEMBRESIAS -->
+    <section id="membresias">
+
+        <h2>Nuestras Membresías</h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>Básica</h3>
+
+                <p class="precio">$20</p>
+
+                <ul>
+                    <li>✔ Acceso al gimnasio</li>
+                    <li>✔ Área de cardio</li>
+                    <li>✔ Horario regular</li>
+                </ul>
+
+                <a href="#contacto" class="btn">
+                    Elegir Plan
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Premium</h3>
+
+                <p class="precio">$35</p>
+
+                <ul>
+                    <li>✔ Acceso ilimitado</li>
+                    <li>✔ Clases grupales</li>
+                    <li>✔ Entrenador personal</li>
+                </ul>
+
+                <a href="#contacto" class="btn">
+                    Elegir Plan
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>VIP</h3>
+
+                <p class="precio">$50</p>
+
+                <ul>
+                    <li>✔ Todo Premium</li>
+                    <li>✔ Nutricionista</li>
+                    <li>✔ Área exclusiva</li>
+                </ul>
+
+                <a href="#contacto" class="btn">
+                    Elegir Plan
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BENEFICIOS -->
+    <section id="beneficios" class="beneficios">
+
+        <h2>¿Por qué elegirnos?</h2>
+
+        <div class="beneficios-container">
+
+            <div class="beneficio">
+                <h3>🏋️ Equipos Modernos</h3>
+                <p>
+                    Tecnología y maquinaria de última generación.
+                </p>
+            </div>
+
+            <div class="beneficio">
+                <h3>👨‍🏫 Entrenadores Expertos</h3>
+                <p>
+                    Profesionales certificados para ayudarte.
+                </p>
+            </div>
+
+            <div class="beneficio">
+                <h3>🔥 Ambiente Motivador</h3>
+                <p>
+                    Espacios diseñados para impulsar tus resultados.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+
+        <h2>Contáctanos</h2>
+
+        <form>
+
+            <input
+                type="text"
+                placeholder="Nombre Completo"
+                required
+            >
+
+            <input
+                type="email"
+                placeholder="Correo Electrónico"
+                required
+            >
+
+            <textarea
+                placeholder="Escribe tu mensaje"
+            ></textarea>
+
+            <button type="submit">
+                Enviar Mensaje
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            © 2026 PowerFit Gym | Todos los derechos reservados.
+        </p>
+    </footer>
+
 </body>
+
 </html>
-
-
-<link rel="stylesheet" href="style.css">
+```
