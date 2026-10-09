@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
- 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PowerFit Gym</title>
- 
+
     <link rel="stylesheet" href="style.css">
 </head>
- 
+
 <body>
- 
+
     <header>
         <nav>
             <div class="logo">GymMembership</div>
- 
+
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#membresias">Membresías</a></li>
@@ -23,286 +23,288 @@
             </ul>
         </nav>
     </header>
- 
- 
+
+
     <!-- PORTADA -->
     <section id="inicio" class="hero">
- 
+
         <div class="hero-content">
- 
+
             <h1>
                 Planes diferentes.<br>
                 <span class="destacado">
                     Resultados increíbles.
                 </span>
             </h1>
- 
+
             <p>
                 Entrena con los mejores equipos, entrenadores certificados
                 y planes diseñados para ayudarte a alcanzar tus metas.
             </p>
- 
+
             <a href="#membresias" class="btn">
                 Ver Membresías
             </a>
- 
+
         </div>
- 
+
     </section>
- 
- 
+
+
     <!-- ESTADÍSTICAS -->
     <section class="stats">
- 
+
         <div class="stat">
             <h3>500+</h3>
             <p>Miembros Activos</p>
         </div>
- 
+
         <div class="stat">
             <h3>20+</h3>
             <p>Entrenadores</p>
         </div>
- 
+
         <div class="stat">
             <h3>10</h3>
             <p>Años de Experiencia</p>
         </div>
- 
+
         <div class="stat">
             <h3>24/7</h3>
             <p>Acceso Disponible</p>
         </div>
- 
+
     </section>
- 
- 
+
+
     <!-- TESTIMONIOS -->
     <section class="testimonios">
- 
+
         <h2>Lo que dicen nuestros clientes</h2>
- 
+
         <div class="testimonios-container">
- 
+
             <div class="testimonio">
                 <p>
                     "Perdí 15 kilos gracias a los entrenadores y al excelente ambiente."
                 </p>
                 <h4>- Carlos M.</h4>
             </div>
- 
+
             <div class="testimonio">
                 <p>
                     "Las instalaciones son increíbles y siempre están limpias."
                 </p>
                 <h4>- Ana R.</h4>
             </div>
- 
+
             <div class="testimonio">
                 <p>
                     "La mejor inversión que he hecho para mi salud."
                 </p>
                 <h4>- José P.</h4>
             </div>
- 
+
         </div>
- 
+
     </section>
- 
- 
+
+
     <!-- HORARIOS -->
     <section class="horarios">
- 
+
         <h2>Horarios</h2>
- 
+
         <table>
- 
+
             <tr>
                 <th>Día</th>
                 <th>Horario</th>
             </tr>
- 
+
             <tr>
                 <td>Lunes - Viernes</td>
                 <td>5:00 AM - 10:00 PM</td>
             </tr>
- 
+
             <tr>
                 <td>Sábado</td>
                 <td>6:00 AM - 8:00 PM</td>
             </tr>
- 
+
             <tr>
                 <td>Domingo</td>
                 <td>7:00 AM - 5:00 PM</td>
             </tr>
- 
+
         </table>
- 
+
     </section>
- 
- 
+
+
     <!-- MEMBRESIAS -->
     <section id="membresias">
- 
+
         <h2>Nuestras Membresías</h2>
- 
+
         <div class="cards">
- 
+
             <!-- PLAN BÁSICO -->
             <div class="card">
- 
+
                 <h3>Básica</h3>
- 
+
                 <p class="precio">$20</p>
- 
+
                 <ul>
                     <li>✔ Acceso al gimnasio</li>
                     <li>✔ Área de cardio</li>
                     <li>✔ Horario regular</li>
                 </ul>
- 
-                <a href="#contacto" class="btn" onclick="elegirPlan('Básica')">
+
+                <a href="pago.html?plan=basica" class="btn">
                     Elegir Plan
                 </a>
- 
+
             </div>
- 
- 
+
+
             <!-- PLAN PREMIUM -->
             <div class="card">
- 
+
                 <h3>Premium</h3>
- 
+
                 <p class="precio">$35</p>
- 
+
                 <ul>
                     <li>✔ Acceso ilimitado</li>
                     <li>✔ Clases grupales</li>
                     <li>✔ Entrenador personal</li>
                 </ul>
- 
-                <a href="#contacto" class="btn" onclick="elegirPlan('Premium')">
+
+                <a href="pago.html?plan=premium" class="btn">
                     Elegir Plan
                 </a>
- 
+
             </div>
- 
- 
+
+
             <!-- PLAN VIP -->
             <div class="card">
- 
+
                 <h3>VIP</h3>
- 
+
                 <p class="precio">$50</p>
- 
+
                 <ul>
                     <li>✔ Todo Premium</li>
                     <li>✔ Nutricionista</li>
                     <li>✔ Área exclusiva</li>
                 </ul>
- 
-                <a href="#contacto" class="btn" onclick="elegirPlan('VIP')">
+
+                <a href="pago.html?plan=vip" class="btn">
                     Elegir Plan
                 </a>
- 
+
             </div>
- 
+
         </div>
- 
+
     </section>
- 
- 
+
+
     <!-- BENEFICIOS -->
     <section id="beneficios" class="beneficios">
- 
+
         <h2>¿Por qué elegirnos?</h2>
- 
+
         <div class="beneficios-container">
- 
+
             <div class="beneficio">
                 <h3>🏋️ Equipos Modernos</h3>
                 <p>
                     Tecnología y maquinaria de última generación.
                 </p>
             </div>
- 
+
             <div class="beneficio">
                 <h3>👨‍🏫 Entrenadores Expertos</h3>
                 <p>
                     Profesionales certificados para ayudarte.
                 </p>
             </div>
- 
+
             <div class="beneficio">
                 <h3>🔥 Ambiente Motivador</h3>
                 <p>
                     Espacios diseñados para impulsar tus resultados.
                 </p>
             </div>
- 
+
         </div>
- 
+
     </section>
- 
- 
+
+
     <!-- REGISTRAR SOCIO -->
     <section id="registro" class="formulario">
- 
+
         <h2>Registrar Socio</h2>
- 
+
         <input type="text" id="nombres" placeholder="Nombres">
         <input type="text" id="apellidos" placeholder="Apellidos">
         <input type="text" id="documento" placeholder="Documento">
         <input type="text" id="telefono" placeholder="Teléfono">
         <input type="email" id="correo" placeholder="Correo">
- 
+
         <button type="button" onclick="guardarSocio()">Guardar Socio</button>
- 
+
     </section>
- 
- 
+
+
     <!-- CONTACTO -->
     <section id="contacto">
- 
+
         <h2>Contáctanos</h2>
- 
+
         <form onsubmit="guardarContacto(event)">
- 
+
             <input type="text" id="contactoNombre" placeholder="Nombre Completo" required>
- 
+
             <input type="email" id="contactoCorreo" placeholder="Correo Electrónico" required>
- 
+
             <textarea id="contactoMensaje" placeholder="Escribe tu mensaje"></textarea>
- 
+
             <button type="submit">
                 Enviar Mensaje
             </button>
- 
+
         </form>
- 
+
     </section>
- 
- 
+
+
     <!-- FOOTER -->
     <footer>
         <p>
             © 2026 PowerFit Gym | Todos los derechos reservados.
         </p>
     </footer>
- 
- 
+
+
     <!-- Tus scripts de siempre (elegirPlan, enviarFormulario, etc.) -->
     <script src="app.js"></script>
     <script src="script.js"></script>
- 
+
     <!-- guardarSocio va al final para que sea la versión que se usa -->
     <script>
+        const API = "http://localhost:5096/api";
+
         function valor(id) {
             const el = document.getElementById(id);
             return el ? el.value.trim() : "";
         }
- 
+
         async function guardarSocio() {
             const socio = {
                 nombres: valor("nombres"),
@@ -311,23 +313,23 @@
                 telefono: valor("telefono") || null,
                 correo: valor("correo") || null
             };
- 
+
             if (!socio.nombres || !socio.apellidos || !socio.documento) {
                 alert("Nombres, apellidos y documento son obligatorios");
                 return;
             }
- 
+
             try {
-                const res = await fetch("http://localhost:5096/api/Socios", {
+                const res = await fetch(API + "/Socios", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(socio)
                 });
- 
+
                 if (!res.ok) throw new Error(await res.text());
- 
+
                 alert("Socio guardado");
- 
+
                 ["nombres", "apellidos", "documento", "telefono", "correo"].forEach(function (id) {
                     var el = document.getElementById(id);
                     if (el) el.value = "";
@@ -337,25 +339,25 @@
                 alert("No se pudo guardar: " + e.message);
             }
         }
- 
+
         async function guardarContacto(event) {
             event.preventDefault();
- 
+
             const contacto = {
                 nombre: valor("contactoNombre"),
                 correo: valor("contactoCorreo"),
                 mensaje: valor("contactoMensaje") || null
             };
- 
+
             try {
-                const res = await fetch("http://localhost:5096/api/Contactos", {
+                const res = await fetch(API + "/Contactos", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(contacto)
                 });
- 
+
                 if (!res.ok) throw new Error(await res.text());
- 
+
                 alert("Mensaje enviado");
                 event.target.reset();
             } catch (e) {
@@ -364,8 +366,7 @@
             }
         }
     </script>
- 
-</body>
- 
-</html>
 
+</body>
+
+</html>

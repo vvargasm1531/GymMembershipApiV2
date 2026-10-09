@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago de membresía | GymMembership</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .pago-box {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .resumen {
+            background: #1b1b1b;
+            border: 2px solid #ffd000;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .resumen h3 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .resumen .precio {
+            margin-bottom: 0;
+        }
+
+        .pago-box label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .pago-box select {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .fila {
+            display: flex;
+            gap: 20px;
+        }
+
+        .fila > div {
+            flex: 1;
+        }
+
+        .aviso {
+            font-size: .85rem;
+            color: #fff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .volver {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #ffd000;
+            font-weight: 600;
+        }
+
+        #tarjeta {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">GymMembership</div>
+
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#membresias">Membresías</a></li>
+                <li><a href="index.html#beneficios">Beneficios</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+
+        <h2>Información de pago</h2>
+
+        <div class="pago-box">
+
+            <div class="resumen">
+                <h3 id="resumenPlan">Plan</h3>
+                <p class="precio" id="resumenPrecio">$0</p>
+                <p>por mes</p>
+            </div>
+
+            <form onsubmit="pagar(event)">
+
+                <label for="documento">Documento del socio</label>
+                <input type="text" id="documento" placeholder="Documento con el que te registraste" required>
+
+                <label for="metodo">Método de pago</label>
+                <select id="metodo" onchange="mostrarTarjeta()">
+                    <option value="Efectivo">Efectivo</option>
+                    <option value="Tarjeta">Tarjeta</option>
+                    <option value="Transferencia">Transferencia</option>
+                </select>
+
+                <div id="tarjeta">
+                    <label for="titular">Nombre en la tarjeta</label>
+                    <input type="text" id="titular" placeholder="Nombre y apellido">
+
+                    <label for="numero">Número de tarjeta</label>
+                    <input type="text" id="numero" placeholder="0000 0000 0000 0000" maxlength="19" inputmode="numeric">
+
+                    <div class="fila">
+                        <div>
+                            <label for="vence">Vencimiento</label>
+                            <input type="text" id="vence" placeholder="MM/AA" maxlength="5">
+                        </div>
+                        <div>
+                            <label for="cvv">CVV</label>
+                            <input type="password" id="cvv" placeholder="***" maxlength="4" inputmode="numeric">
+                        </div>
+                    </div>
+
+                    <p class="aviso">
+                        Por seguridad, el número completo y el CVV no se guardan en la base de datos.
+                        Solo se registra el método de pago y los últimos 4 dígitos.
+                    </p>
+                </div>
+
+                <button type="submit">Confirmar pago</button>
+
+            </form>
+
+            <a class="volver" href="index.html#membresias">← Volver a las membresías</a>
+
+        </div>
+
+    </section>
+
+    <script>
+        const API = "http://localhost:5096/api";
+
+        const PLANES = {
+            basica:  { nombre: "Básica",  precio: 20 },
+            premium: { nombre: "Premium", precio: 35 },
+            vip:     { nombre: "VIP",     precio: 50 }
+        };
+
+        // El plan llega por la URL: pago.html?plan=premium
+        const params = new URLSearchParams(window.location.search);
+        const clave = (params.get("plan") || "").toLowerCase();
+        const plan = PLANES[clave];
+
+        if (plan) {
+            document.getElementById("resumenPlan").textContent = "Plan " + plan.nombre;
+            document.getElementById("resumenPrecio").textContent = "$" + plan.precio;
+        } else {
+            alert("Primero elige un plan.");
+            window.location.href = "index.html#membresias";
+        }
+
+        function mostrarTarjeta() {
+            const esTarjeta = document.getElementById("metodo").value === "Tarjeta";
+            document.getElementById("tarjeta").style.display = esTarjeta ? "block" : "none";
+        }
+
+        async function pagar(event) {
+            event.preventDefault();
+            if (!plan) return;
+
+            const documento = document.getElementById("documento").value.trim();
+            const metodo = document.getElementById("metodo").value;
+            let ultimos4 = null;
+
+            if (metodo === "Tarjeta") {
+                const numero = document.getElementById("numero").value.replace(/\D/g, "");
+                const titular = document.getElementById("titular").value.trim();
+                const vence = document.getElementById("vence").value.trim();
+                const cvv = document.getElementById("cvv").value.trim();
+
+                if (!titular || numero.length < 13 || !vence || cvv.length < 3) {
+                    alert("Completa los datos de la tarjeta.");
+                    return;
+                }
+                ultimos4 = numero.slice(-4);
+            }
+
+            try {
+                // 1) Buscar al socio por documento
+                const resSocios = await fetch(API + "/Socios");
+                if (!resSocios.ok) throw new Error(await resSocios.text());
+                const socios = await resSocios.json();
+                const socio = socios.find(s => s.documento === documento);
+
+                if (!socio) {
+                    alert("No encontramos un socio con ese documento. Regístrate primero.");
+                    window.location.href = "index.html#registro";
+                    return;
+                }
+
+                // 2) Registrar el pago (solo datos no sensibles)
+                const res = await fetch(API + "/Pagos", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        socioId: socio.socioId,
+                        plan: plan.nombre,
+                        monto: plan.precio,
+                        metodoPago: metodo,
+                        ultimos4: ultimos4
+                    })
+                });
+
+                if (!res.ok) throw new Error(await res.text());
+
+                alert("Pago registrado. ¡Bienvenido al plan " + plan.nombre + "!");
+                window.location.href = "index.html";
+            } catch (e) {
+                console.error(e);
+                alert("No se pudo registrar el pago: " + e.message);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
