@@ -99,7 +99,11 @@ nav a:hover {
     margin-bottom: 35px;
 }
 
+/* BOTONES (.btn se usa en el HTML, .btn-principal queda por compatibilidad) */
+
+.btn,
 .btn-principal {
+    display: inline-block;
     text-decoration: none;
     background: #ffd000;
     color: black;
@@ -109,8 +113,13 @@ nav a:hover {
     transition: .3s;
 }
 
+.btn:hover,
 .btn-principal:hover {
     background: #ffb700;
+}
+
+.card .btn {
+    margin-top: 20px;
 }
 
 /* SECCIONES */
@@ -199,6 +208,13 @@ section h2 {
 /* CONTACTO */
 
 form {
+    max-width: 700px;
+    margin: auto;
+}
+
+/* REGISTRAR SOCIO */
+
+.formulario {
     max-width: 700px;
     margin: auto;
 }
@@ -363,6 +379,7 @@ footer {
     }
 
 }
+
 /* HORARIOS */
 
 .horarios {
@@ -414,6 +431,8 @@ footer {
 
 }
 
+/* FONDO ROJO (lo tenías al final del archivo).
+   Para volver al fondo oscuro, borra este bloque. */
 body {
     background: red !important;
 }

@@ -190,3 +190,259 @@ function mostrarNotificacion(mensaje) {
 
 }
 ```
+
+
+var app = builder.Build();
+
+app.UseCors("dev");
+
+// app.UseHttpsRedirection();
+
+app.UseAuthorization();
+app.MapControllers();
+
+
+
+async function editarSocio() {
+
+const socio = {
+socioId: 1,
+nombre: "Victor Morales",
+correo: "victor@gmail.com"
+};
+
+await fetch(
+'https://localhost:7000/api/Socios/1',
+{
+method: 'PUT',
+headers: {
+'Content-Type': 'application/json'
+},
+body: JSON.stringify(socio)
+}
+);
+}
+
+
+async function actualizarSocio() {
+
+const socio = {
+socioId: 1,
+nombre: "Victor",
+telefono: "88888888"
+};
+
+await fetch(
+"https://localhost:7001/api/Socios/1",
+{
+method: "PUT",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify(socio)
+}
+);
+
+alert("Socio actualizado");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+async function actualizarSocio() {
+
+const socio = {
+socioId: 1,
+nombre: "Victor",
+telefono: "88888888"
+};
+
+await fetch(
+"https://localhost:7001/api/Socios/1",
+{
+method: "PUT",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify(socio)
+}
+);
+
+alert("Socio actualizado");
+}
+
+
+
+
+
+
+
+
+
+async function guardarSocio() {
+
+const socio = {
+nombres: document.getElementById("nombres").value,
+apellidos: document.getElementById("apellidos").value,
+documento: document.getElementById("documento").value,
+telefono: null,
+correo: null,
+fechaNacimiento: null
+};
+
+try {
+
+const response = await fetch(
+"https://localhost:5001/api/socios",
+{
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify(socio)
+}
+);
+
+if (response.ok) {
+alert("Socio guardado correctamente");
+} else {
+alert("Error al guardar");
+}
+
+} catch (error) {
+console.error(error);
+alert("No se pudo conectar con la API");
+}
+}
+
+
+fetch("http://localhost:5096/api/Socios", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ nombres: "Prueba", apellidos: "Test", documento: "123" }) }).then(r => r.text()).then(console.log)
+
+
+
+async function guardarContacto(event) {
+    event.preventDefault();
+
+    const contacto = {
+        nombre: valor("contactoNombre"),
+        correo: valor("contactoCorreo"),
+        mensaje: valor("contactoMensaje") || null
+    };
+
+    try {
+        const res = await fetch("http://localhost:5096/api/Contactos", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(contacto)
+        });
+
+        if (!res.ok) throw new Error(await res.text());
+
+        alert("Mensaje enviado");
+        event.target.reset();
+    } catch (e) {
+        console.error(e);
+        alert("No se pudo enviar: " + e.message);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+async function guardarContacto(event) {
+    event.preventDefault();
+
+    const contacto = {
+        nombre: valor("contactoNombre"),
+        correo: valor("contactoCorreo"),
+        mensaje: valor("contactoMensaje") || null
+    };
+
+    try {
+        const res = await fetch("http://localhost:5096/api/Contactos", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(contacto)
+        });
+
+       
+        if (!res.ok) throw new Error("Código " + res.status + " " + (await res.text()));
+
+        alert("Mensaje enviado");
+        event.target.reset();
+    } catch (e) {
+        console.error(e);
+        alert("No se pudo enviar: " + e.message);
+    }
+}
+
+
+
+
+
+
+
+if (!socio.nombres.trim() || !socio.apellidos.trim() || !socio.documento.trim()) {
+  alert("Nombres, apellidos y documento son obligatorios");
+  return;
+}
+
+
+
+
+
+
+
+
+async function guardarSocio() {
+  const socio = {
+    nombres: document.getElementById("nombres").value,
+    apellidos: document.getElementById("apellidos").value,
+    documento: document.getElementById("documento").value,
+    telefono: document.getElementById("telefono").value || null,
+    correo: document.getElementById("correo").value || null
+  };
+
+  if (!socio.nombres.trim() || !socio.apellidos.trim() || !socio.documento.trim()) {
+    alert("Nombres, apellidos y documento son obligatorios");
+    return;
+  }
+
+  try {
+    const res = await fetch("http://localhost:5096/api/Socios", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(socio)
+    });
+    if (!res.ok) throw new Error(await res.text());
+    alert("Socio guardado");
+  } catch (e) {
+    console.error(e);
+    alert("Error: " + e.message);
+  }
+}
+
+
+
+
+
+fetch("http://localhost:5096/api/socios").then(r => r.json()).then(console.log).catch(console.error)
